@@ -1,0 +1,86 @@
+<div>
+    <nav class="navbar navbar-light bg-primary">
+        <div class="container-fluid">
+            <h2 class="text-light">Employe Data </h2>
+            <div class="d-flex">
+                <button class="btn btn-success" (click)="onAddEmploye()">Add Employe</button>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Employe Form -->
+<div class="container mt-5" *ngIf="isForm">
+    <form [formGroup]="emolyeForm">
+        <div class="card">
+            <h5 class="card-header bg-info text-light d-flex justify-content-center align-items-center">Employe Form
+            </h5>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter Full Name"
+                        formControlName="fullName">
+                    <div *ngIf="emolyeForm.get('fullName')?.invalid && emolyeForm.get('fullName')?.touched">
+                        <span *ngIf="emolyeForm.get('fullName')?.errors?.['required']" class="text-danger">Name is Required</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"
+                        formControlName="email">
+                    <div *ngIf="emolyeForm.get('email')?.invalid && emolyeForm.get('email')?.touched">
+                        <span *ngIf="emolyeForm.get('email')?.errors?.['required']" class="text-danger">E-mail is Required</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="mobileNumber" class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"
+                        (input)="OnInputChange($event)" maxlength="10" placeholder="Enter Mobile Number"
+                        formControlName="mobileNumber">
+                    <div *ngIf="emolyeForm.get('mobileNumber')?.invalid && emolyeForm.get('mobileNumber')?.touched">
+                        <span *ngIf="emolyeForm.get('mobileNumber')?.errors?.['required']" class="text-danger">Mobile Number is
+                            Required</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="salary" class="form-label">Salary</label>
+                    <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary "
+                        formControlName="salary">
+                    <div *ngIf="emolyeForm.get('salary')?.invalid && emolyeForm.get('salary')?.touched">
+                        <span *ngIf="emolyeForm.get('salary')?.errors?.['required']" class="text-danger">Salary is Required</span>
+                    </div>
+                </div>
+                <div class="text-light d-flex justify-content-center align-items-center">
+                    <div class="btn btn-success " (click)="onSubmit()">submit</div>
+
+                    <div class="btn btn-danger mx-3" (click)="onClose()">Close</div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Employe Table -->
+<table class="table mt-5 " *ngIf="employeDataStore.length>0">
+    <thead>
+        <tr class="bg-dark text-light">
+            <th scope="col">Empolye Id</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employeData of employeDataStore;let i=index">
+            <td>{{employeData.id}}</td>
+            <td>{{employeData.fullName}}</td>
+            <td>{{employeData.email}}</td>
+            <td>{{employeData.mobileNumber}}</td>
+            <td>{{employeData.salary}}</td>
+            <td>
+                <button class="btn btn-info " (click)="onEdit(employeData)">Edit</button>
+                <button class="btn btn-danger mx-3" (click)="onDelete(employeData.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

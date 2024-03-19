@@ -1,0 +1,25 @@
+{
+  "employees": [
+    {
+      "id": "lts92wlhcz8ee",
+      "fullName": "Dodiya Bhargavsinh",
+      "email": "bhargavsinhdodiya4@gmail.com",
+      "mobileNumber": "8160356110",
+      "salary": "12500"
+    },
+    {
+      "fullName": "dodiya Sauravsinh",
+      "email": "sauravsinh777@gmail.com",
+      "mobileNumber": "7046554471",
+      "salary": "0",
+      "id": "lts93r0lk3l1u"
+    },
+    {
+      "id": "ltxym5igfb2vq",
+      "fullName": "gohil kevalsinh",
+      "email": "kevalsinh7@gmail.com",
+      "mobileNumber": "9998970389",
+      "salary": "35000"
+    }
+  ]
+}
